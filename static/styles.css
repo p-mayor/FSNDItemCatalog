@@ -136,8 +136,8 @@ u }
 .creator {
 	padding-right: 20px;
 	margin-top: -20px;
-	text-align: right;
-	float:right;
+	float: right;
+	text-align: center;
 }
 .creator img {
 	width: 100px;

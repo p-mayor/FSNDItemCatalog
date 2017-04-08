@@ -14,10 +14,10 @@
 			<form action="#" method = "post">
 				<div class="form-group">
 					<label for="name">Name:</label>
-					<input type ="text" maxlength="50" class="form-control" name="name"placeholder="Name of the course">
+					<input type ="text" maxlength="50" class="form-control" name="name"placeholder="Name of the item">
 
 					<label for="description">Description:</label>
-					<textarea class="form-control" maxlength="250" rows="3" name="description" placeholder="Description of the course"></textarea>
+					<textarea class="form-control" maxlength="250" rows="3" name="description" placeholder="Description of the item"></textarea>
 
 					<label for="price">Price:</label>
 					<div class="input-group">
@@ -49,6 +49,12 @@
 					<span class="glyphicon glyphicon-glass" aria-hidden="true"></span>Create</button>
 				</div>
 			</form>
+			<a href = '{{url_for('showRestaurants')}}'>
+				<button class="btn btn-default delete">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+						Cancel
+				</button>
+			</a>
 		</div>
 	</div>
 {% endblock %}
