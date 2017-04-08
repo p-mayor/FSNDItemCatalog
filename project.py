@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect,jsonify, url_for, flash
+from flask import Flask, render_template, request, redirect, jsonify, url_for, flash
 
 
 from sqlalchemy import create_engine, asc
@@ -232,6 +232,7 @@ def gdisconnect():
         response.headers['Content-Type'] = 'application/json'
         return response
 
+
 #JSON APIs to view Restaurant Information
 @app.route('/restaurant/<int:restaurant_id>/menu/JSON')
 def restaurantMenuJSON(restaurant_id):
@@ -244,6 +245,7 @@ def restaurantMenuJSON(restaurant_id):
 def menuItemJSON(restaurant_id, menu_id):
     Menu_Item = session.query(MenuItem).filter_by(id = menu_id).one()
     return jsonify(Menu_Item = Menu_Item.serialize)
+
 
 @app.route('/restaurant/JSON')
 def restaurantsJSON():
@@ -261,6 +263,7 @@ def showRestaurants():
   else:
     return render_template('restaurants.html', restaurants = restaurants)
 
+
 #Create a new restaurant
 @app.route('/restaurant/new/', methods=['GET','POST'])
 def newRestaurant():
@@ -275,6 +278,7 @@ def newRestaurant():
     return redirect(url_for('showRestaurants'))
   else:
     return render_template('newRestaurant.html')
+
 
 #Edit a restaurant
 @app.route('/restaurant/<int:restaurant_id>/edit/', methods = ['GET', 'POST'])
@@ -312,6 +316,7 @@ def deleteRestaurant(restaurant_id):
   else:
     return render_template('deleteRestaurant.html',restaurant = restaurantToDelete)
 
+
 #Show a restaurant menu
 @app.route('/restaurant/<int:restaurant_id>/')
 @app.route('/restaurant/<int:restaurant_id>/menu/')
@@ -326,7 +331,6 @@ def showMenu(restaurant_id):
       return render_template('menu.html', items = items, restaurant = restaurant, 
         creator = creator)
      
-
 
 #Create a new menu item
 @app.route('/restaurant/<int:restaurant_id>/menu/new/',methods=['GET','POST'])
@@ -347,6 +351,7 @@ def newMenuItem(restaurant_id):
       return redirect(url_for('showMenu', restaurant_id = restaurant_id))
   else:
       return render_template('newmenuitem.html', restaurant_id = restaurant_id)
+
 
 #Edit a menu item
 @app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/edit', methods=['GET','POST'])
@@ -390,6 +395,7 @@ def deleteMenuItem(restaurant_id,menu_id):
         return redirect(url_for('showMenu', restaurant_id = restaurant_id))
     else:
         return render_template('deleteMenuItem.html', item = itemToDelete)
+
 
 def createUser(login_session):
     newUser = User(name=login_session['username'], email=login_session[

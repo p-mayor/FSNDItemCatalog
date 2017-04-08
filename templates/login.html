@@ -1,28 +1,41 @@
-<!DOCTYPE html>
-<html>
-<head>
-<!--LOAD PRE-REQUISITES FOR GOOGLE SIGN IN -->
-
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
-  </script>
-
-  <script src="//apis.google.com/js/platform.js?onload=start"> </script>
-
-<!-- END PRE-REQUISITES FOR GOOGLE SIGN IN -->
-</head>
-<body>
-<!-- GOOGLE PLUS SIGN IN BUTTON-->
-  <div id="signInButton">
-    <span class="g-signin"
-          data-scope="openid email"
-          data-clientid="797911560240-vrc29e663caq0qvfk0726i98hhrafb8s.apps.googleusercontent.com"
-          data-redirecturi="postmessage"
-          data-accesstype="offline"
-          data-cookiepolicy="single_host_origin"
-          data-callback="signInCallback"
-          data-approvalprompt="force">
-    </span>
+{% extends "main.html" %}
+{% block content %}
+  <div class="row top-menu">
+    <div class="col-md-10"></div>
+    <div class="col-md-2 text-right"></div>
   </div>
+  <div class="row divider blue">
+    <div class="col-md-12"></div>
+  </div>
+  <div class="row banner main">
+    <div class="col-md-1"></div>
+    <div class="col-md-11 padding-none">
+      <h1>Restaurants - Login</h1>
+    </div>
+  </div>
+  <div class="row login-buttons">
+    <div class="col-md-6 text-center">
+      <!-- GOOGLE PLUS SIGN IN BUTTON-->
+      <div id="signInButton">
+        <span class="g-signin"
+              data-scope="openid email"
+              data-clientid="797911560240-vrc29e663caq0qvfk0726i98hhrafb8s.apps.googleusercontent.com"
+              data-redirecturi="postmessage"
+              data-accesstype="offline"
+              data-cookiepolicy="single_host_origin"
+              data-callback="signInCallback"
+              data-approvalprompt="force">
+        </span>
+      </div>
+    </div>
+    <div class="col-md-6 text-center">
+      <!--FACEBOOK SIGN IN BUTTON -->
+      <button>
+        <fb:login-button scope="public_profile,email" onlogin="sendTokenToServer();">
+        <a href='javascript:sendTokenToServer()'>Login with Facebook</a>
+        </fb:login-button>
+      </button>
+    </div>
 
   <div id="result"></div>
 
@@ -57,9 +70,6 @@
     } 
   }
   </script>
-
-
-
 <!--END GOOGLE PLUS SIGN IN BUTTON -->
 
 
@@ -114,15 +124,5 @@
   }
 </script>
 
+{% endblock %}
 
-<button>
-  <fb:login-button scope="public_profile,email" onlogin="sendTokenToServer();">
-    <a href='javascript:sendTokenToServer()'>Login with Facebook</a>
-  </fb:login-button>
-</button>
-
-<!--END FACEBOOK SIGN IN -->
-
-</body>
-
-</html>
