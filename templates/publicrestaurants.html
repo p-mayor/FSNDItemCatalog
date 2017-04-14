@@ -1,14 +1,6 @@
 {% extends "main.html" %}
 {% block content %}
-	<div class="row top-menu">
-		<div class="col-md-10"></div>
-		<div class="col-md-2 text-right">
-			<a href="{{url_for('showLogin')}}">
-				<span class="glyphicon glyphicon-log-in"></span>
-				Log in
-			</a>
-		</div>
-	</div>
+{% include "header.html" %}
 	<div class="row divider blue">
 		<div class="col-md-12"></div>
 	</div>
