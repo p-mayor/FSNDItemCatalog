@@ -12,7 +12,7 @@ from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Restaurant, MenuItem, User
 
 from flask import Flask, render_template, request, redirect,\
-jsonify, url_for, flash, make_response
+    jsonify, url_for, flash, make_response
 
 app = Flask(__name__)
 
@@ -63,7 +63,8 @@ def fbconnect():
     # Use token to get user info from API
     userinfo_url = "https://graph.facebook.com/v2.8/me"
 
-    url1 = 'https://graph.facebook.com/v2.8/me?%s&fields=name,id,email,picture' % token
+    url1 = 'https://graph.facebook.com/v2.8/me?%s&fields=\
+            name,id,email,picture' % token
     h = httplib2.Http()
     result = h.request(url1, 'GET')[1]
     data = json.loads(result)
@@ -73,7 +74,6 @@ def fbconnect():
     login_session['email'] = data['email']
     login_session['facebook_id'] = data['id']
     login_session['picture'] = data['picture']['data']['url']
-
 
     # The token must be stored in the login_session in order to properly
     # logout, let's strip out the information before the equals sign in
@@ -424,7 +424,8 @@ def createUser(login_session):
     if not user_id:
         session.add(newUser)
         session.commit()
-        user = session.query(User).filter_by(email=login_session['email']).one()
+        user = session.query(User).\
+            filter_by(email=login_session['email']).one()
         return user.id
 
 
