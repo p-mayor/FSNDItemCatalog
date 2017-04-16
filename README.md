@@ -32,9 +32,9 @@ Vagrant is the software that configures the VM and lets you share files between 
 
 From the terminal, run:
 
-    git clone https://github.com/udacity/OAuth2.0 oauth
+    git clone https://github.com/p-mayor/FSNDItemCatalog
 
-This will give you a directory named **oauth** complete with the source code for the flask application, a vagrantfile, and a bootstrap.sh file for installing all of the necessary tools. 
+This will give you a directory named **FSNDItemCatalog** complete with the source code for the flask application, a vagrantfile, and a bootstrap.sh file for installing all of the necessary tools. 
 
 ## Run the virtual machine!
 
@@ -53,6 +53,5 @@ Now type **python database_setup.py** to initialize the database.
 
 Type **python lotsofmenus.py** to populate the database with restaurants and menu items. (Optional)
 
-Type **python project.py** to run the Flask web server. In your browser visit **http://localhost:5000** to view the restaurant menu app.  You should be able to view, add, edit, and delete menu items and restaurants.
+Type **python project.py** to run the Flask web server. In your browser visit **http://localhost:5000** to view the restaurant menu app. Once signed in via google or facebook, you should be able to view, add, edit, and delete menu items and restaurants.
 
-Additionally, implements third-party authorization and authenication services from google and facebook.

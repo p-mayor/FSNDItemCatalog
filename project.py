@@ -420,10 +420,12 @@ def deleteMenuItem(restaurant_id, menu_id):
 def createUser(login_session):
     newUser = User(name=login_session['username'], email=login_session[
                    'email'], picture=login_session['picture'])
-    session.add(newUser)
-    session.commit()
-    user = session.query(User).filter_by(email=login_session['email']).one()
-    return user.id
+    user_id = getUserID(login_session['email'])
+    if not user_id:
+        session.add(newUser)
+        session.commit()
+        user = session.query(User).filter_by(email=login_session['email']).one()
+        return user.id
 
 
 def getUserInfo(user_id):
